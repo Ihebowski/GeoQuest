@@ -1,16 +1,27 @@
-# geoquest
+# GeoQuest
 
-GeoQuest is a fun geography quiz game where you test your knowledge of countries, flags, and capitals. Challenge yourself, compete with others, and explore the world!
+GeoQuest is a fun and interactive geography quiz game that tests your knowledge of countries, flags, capitals, and more! With multiple game modes, real-time multiplayer challenges, and progressive difficulty, you’ll explore the world while improving your geography skills.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Flag Guessing**: Guess the country based on its flag.
+- **Capital Challenge**: Test your knowledge of country capitals.
+- **Country Outline Quiz**: Identify countries by their outline.
+- **Population Comparison**: Pick the country with the larger population.
+- **Leaderboard**: Track your global ranking and see how you compare.
+- **Achievements & Rewards**: Unlock achievements and earn rewards as you play.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: For the cross-platform mobile app development.
+- **Firebase**: For authentication, database, and real-time leaderboards.
+- **REST Countries API**: For up-to-date country data such as flags, capitals, populations, and languages.
+- **GetX**: State management for smooth and reactive user experience.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/your-username/geoquest.git
+   cd geoquest
