@@ -15,8 +15,10 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final UserController userController = Get.put(UserController(),permanent: true);
+  final UserController userController =
+      Get.put(UserController(), permanent: true);
   final AuthController authController = Get.find<AuthController>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -27,6 +29,132 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
+      endDrawer: Drawer(
+        backgroundColor: backgroundColor,
+        surfaceTintColor: Colors.transparent,
+        shape: BeveledRectangleBorder(
+          borderRadius: BorderRadius.circular(0.0),
+        ),
+        child: ListView(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.1),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const CircleAvatar(
+                    backgroundColor: backgroundColor,
+                    radius: 38.0,
+                    child: Icon(
+                      FluentIcons.person_24_filled,
+                      size: 46.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Text(
+                    userController.userModel.value!.username.capitalizeFirst ??
+                        '',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    userController.userModel.value!.email.capitalizeFirst ?? '',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            ListTile(
+              leading: const Icon(
+                FluentIcons.home_24_filled,
+                size: 24.0,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Home',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Get.toNamed("/");
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                FluentIcons.data_usage_24_filled,
+                size: 24.0,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Leaderboard',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Get.toNamed("/leaderboard");
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                FluentIcons.settings_24_filled,
+                size: 24.0,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                Get.toNamed("/settings");
+              },
+            ),
+            ListTile(
+              leading: const Icon(
+                FluentIcons.sign_out_24_filled,
+                size: 24.0,
+                color: elementColor,
+              ),
+              title: const Text(
+                'Logout',
+                style: TextStyle(
+                  color: elementColor,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                authController.logoutUser();
+              },
+            ),
+          ],
+        ),
+      ),
       body: Obx(
         () {
           if (userController.isLoading.value) {
@@ -90,7 +218,7 @@ class _HomeViewState extends State<HomeView> {
                       ],
                     ),
                     GestureDetector(
-                      onTap: authController.logoutUser,
+                      onTap: () => _scaffoldKey.currentState?.openEndDrawer(),
                       child: const CircleAvatar(
                         radius: 28.0,
                         backgroundColor: primaryColor,

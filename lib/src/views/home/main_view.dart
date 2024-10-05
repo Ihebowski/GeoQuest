@@ -39,7 +39,7 @@ class _MainViewState extends State<MainView> {
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: Icon(FluentIcons.data_usage_20_regular),
+            icon: Icon(FluentIcons.data_usage_24_regular),
             label: "Leaderboard",
           ),
           BottomNavigationBarItem(
