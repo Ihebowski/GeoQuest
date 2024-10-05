@@ -47,7 +47,7 @@ class _ResultQuizViewState extends State<ResultQuizView> {
                   ),
                 ),
                 const Text(
-                  "You scored",
+                  "You scored:",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24.0,
@@ -83,21 +83,24 @@ class _ResultQuizViewState extends State<ResultQuizView> {
                 const SizedBox(height: 25.0),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
-                  child: Container(
-                    height: 50.0,
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: const Center(
-                      child: Text(
-                        "Check leaderboard",
-                        style: TextStyle(
-                          color: primaryColor,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
+                  child: GestureDetector(
+                    onTap: () => Get.offNamed("/"),
+                    child: Container(
+                      height: 50.0,
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: const Center(
+                        child: Text(
+                          "Return Menu",
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
@@ -106,7 +109,7 @@ class _ResultQuizViewState extends State<ResultQuizView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: GestureDetector(
-                    onTap: () => Get.offAndToNamed("/home"),
+                    onTap: () => Get.offNamed("/quiz"),
                     child: Container(
                       height: 50.0,
                       width: double.infinity,

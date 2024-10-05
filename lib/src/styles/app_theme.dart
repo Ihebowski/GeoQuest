@@ -6,6 +6,7 @@ class AppTheme {
     useMaterial3: true,
     scaffoldBackgroundColor: backgroundColor,
     shadowColor: elementColor,
+    splashColor: backgroundColor,
     appBarTheme: const AppBarTheme(
       elevation: 0.0,
       backgroundColor: backgroundColor,
@@ -29,8 +30,8 @@ class AppTheme {
         fontSize: 14.0,
       ),
       unselectedLabelStyle: TextStyle(
-      fontSize: 14.0,
-    ),
+        fontSize: 14.0,
+      ),
     ),
   );
 }

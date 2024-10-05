@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:geoquest/src/controllers/quiz_controller.dart';
 import 'package:geoquest/src/styles/app_colors.dart';
-import 'package:geoquest/src/views/quiz/widgets/question_tile.dart';
+import 'package:geoquest/src/views/quiz/widgets/answer_tile.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
 class QuizView extends StatelessWidget {
@@ -16,45 +16,39 @@ class QuizView extends StatelessWidget {
       appBar: AppBar(
         title: const Text("10 Questions"),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () => Get.back(),
           icon: const Icon(
             FluentIcons.chevron_left_24_filled,
             color: Colors.white,
             size: 28.0,
           ),
         ),
-        actions: [
-          Container(
-            margin: const EdgeInsets.only(right: 20.0),
-            padding:
-            const EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
-            decoration: BoxDecoration(
-              color: elementBackgroundColor,
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-            child: const Text(
-              "00 : 30",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
       ),
       body: Obx(
-            () {
-          var currentQuestion = quizController.currentQuestion;
-          var options = quizController.currentOptions;
-
-          if (options.isEmpty) {
+        () {
+          if (quizController.isLoading.value) {
             return const Center(
               child: CircularProgressIndicator(
                 color: elementColor,
               ),
             );
           }
+
+          if (quizController.questions.isEmpty) {
+            return const Center(
+              child: Text(
+                'No Quiz data found.',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            );
+          }
+
+          var currentQuestion = quizController.currentQuestion;
+          var options = quizController.currentOptions;
 
           return Container(
             height: double.infinity,
@@ -86,7 +80,9 @@ class QuizView extends StatelessWidget {
                           backgroundColor: elementBackgroundColor,
                           color: elementColor,
                           minHeight: 10.0,
-                          value: (quizController.currentQuestionIndex.value + 1) / 10,
+                          value:
+                              (quizController.currentQuestionIndex.value + 1) /
+                                  10,
                         ),
                       ),
                     ],
@@ -122,7 +118,7 @@ class QuizView extends StatelessWidget {
                             currentQuestion.imageUrl ?? '',
                             height: 175.0,
                             width: double.infinity,
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),
@@ -131,12 +127,7 @@ class QuizView extends StatelessWidget {
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: options.length,
                         itemBuilder: (context, index) {
-                          return QuestionTile(
-                            text: options[index],
-                            onTap: () {
-                              quizController.checkAnswer(options[index]);
-                            },
-                          );
+                          return AnswerTile(text: options[index]);
                         },
                       ),
                       Padding(
@@ -148,7 +139,8 @@ class QuizView extends StatelessWidget {
                           child: Container(
                             height: 50.0,
                             width: double.infinity,
-                            padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 25.0),
                             decoration: BoxDecoration(
                               color: elementColor,
                               borderRadius: BorderRadius.circular(5.0),

@@ -3,15 +3,10 @@ import 'package:geoquest/src/controllers/quiz_controller.dart';
 import 'package:get/get.dart';
 import 'package:geoquest/src/styles/app_colors.dart';
 
-class QuestionTile extends StatelessWidget {
+class AnswerTile extends StatelessWidget {
   final String text;
-  final VoidCallback onTap;
 
-  const QuestionTile({
-    super.key,
-    required this.text,
-    required this.onTap,
-  });
+  const AnswerTile({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +20,6 @@ class QuestionTile extends StatelessWidget {
         return GestureDetector(
           onTap: () {
             quizController.selectOption(text);
-            onTap();
           },
           child: Container(
             height: 50.0,
@@ -39,18 +33,20 @@ class QuestionTile extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(5.0),
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  text,
-                  style: TextStyle(
-                    color: primaryColor,
-                    fontSize: 18.0,
-                    fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                  ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                text,
+                textAlign: TextAlign.start,
+                overflow: TextOverflow.clip,
+                softWrap: false,
+                maxLines: 1,
+                style: TextStyle(
+                  color: primaryColor,
+                  fontSize: 18.0,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
-              ],
+              ),
             ),
           ),
         );

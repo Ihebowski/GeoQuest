@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "992857673614",
+    "project_id": "geoquest-d0fc1",
+    "storage_bucket": "geoquest-d0fc1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992857673614:android:17cf8faf9d0a0e2ea5dedf",
+        "android_client_info": {
+          "package_name": "dev.ihebowski.geoquest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDh6sY-zFj8h_FWWUCdVckwV_qEqrh7ZFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
