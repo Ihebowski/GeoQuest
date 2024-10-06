@@ -13,6 +13,7 @@ class UserController extends GetxController {
     try {
       isLoading.value = true;
       userModel.value = null;
+      await Future.delayed(const Duration(seconds: 1));
       UserModel? data = await userService.getUserData();
       if (data != null) {
         userModel.value = data;

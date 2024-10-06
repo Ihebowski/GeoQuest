@@ -24,6 +24,7 @@ class AuthController extends GetxController {
         phoneNumber.value,
       );
       if (user != null) {
+        await Future.delayed(const Duration(seconds: 1));
         await authService.saveUser(user.uid);
         isLoggedIn.value = true;
         Get.snackbar(
@@ -51,6 +52,7 @@ class AuthController extends GetxController {
       isLoading.value = true;
       var user = await authService.loginUser(email.value, password.value);
       if (user != null) {
+        await Future.delayed(const Duration(seconds: 1));
         await authService.saveUser(user.uid);
         isLoggedIn.value = true;
         Get.snackbar(
@@ -76,6 +78,7 @@ class AuthController extends GetxController {
   Future<void> logoutUser() async {
     try {
       isLoading.value = true;
+      await Future.delayed(const Duration(seconds: 1));
       await authService.logoutUser();
       await authService.clearUser();
       isLoggedIn.value = false;
@@ -93,6 +96,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> checkLoggedInUser() async {
+    await Future.delayed(const Duration(seconds: 1));
     String? uid = await authService.getSavedUser();
     if (uid != null) {
       isLoggedIn.value = true;

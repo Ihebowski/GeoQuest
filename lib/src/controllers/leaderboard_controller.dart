@@ -13,6 +13,7 @@ class LeaderboardController extends GetxController {
     isLoading.value = true;
     try {
       leaderboardList.clear();
+      await Future.delayed(const Duration(seconds: 1));
       var entries = await _leaderboardService.fetchLeaderboard();
       leaderboardList.assignAll(entries);
     } catch (e) {

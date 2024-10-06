@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:geoquest/src/styles/app_theme.dart';
-import 'package:geoquest/src/views/auth/loading_view.dart';
+import 'package:geoquest/src/views/auth/wrap_view.dart';
 import 'package:geoquest/src/views/auth/login_view.dart';
 import 'package:geoquest/src/views/auth/onboard_view.dart';
 import 'package:geoquest/src/views/auth/register_view.dart';
@@ -26,13 +26,13 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'GeoQuest',
       theme: AppTheme.appTheme,
-      initialRoute: "/loading",
+      initialRoute: "/wrap",
       getPages: [
-        GetPage(name: "/", page: () => MainView()),
         GetPage(name: "/onboard", page: () => const OnboardView()),
-        GetPage(name: "/loading", page: () => const LoadingView()),
+        GetPage(name: "/wrap", page: () => const WrapView()),
         GetPage(name: "/register", page: () => RegisterView()),
         GetPage(name: "/login", page: () => LoginView()),
+        GetPage(name: "/", page: () => const MainView()),
         GetPage(name: "/home", page: () => const HomeView()),
         GetPage(name: "/leaderboard", page: () => const LeaderboardView()),
         GetPage(name: "/quiz", page: () => const QuizView()),

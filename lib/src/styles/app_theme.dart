@@ -4,6 +4,13 @@ import 'package:geoquest/src/styles/app_colors.dart';
 class AppTheme {
   static ThemeData appTheme = ThemeData(
     useMaterial3: true,
+    colorScheme: ColorScheme.fromSwatch(
+      backgroundColor: backgroundColor,
+      accentColor: elementColor,
+      brightness: Brightness.dark,
+      cardColor: primaryColor,
+      errorColor: elementColor,
+    ),
     scaffoldBackgroundColor: backgroundColor,
     shadowColor: elementColor,
     splashColor: backgroundColor,

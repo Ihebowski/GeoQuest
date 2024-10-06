@@ -5,13 +5,23 @@ import 'package:geoquest/src/styles/app_colors.dart';
 import 'package:geoquest/src/views/quiz/widgets/answer_tile.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
-class QuizView extends StatelessWidget {
+class QuizView extends StatefulWidget {
   const QuizView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final QuizController quizController = Get.put(QuizController());
+  State<QuizView> createState() => _QuizViewState();
+}
 
+class _QuizViewState extends State<QuizView> {
+  final QuizController quizController = Get.put(QuizController());
+
+  @override
+  void initState() {
+    super.initState();
+    quizController.loadQuestions();
+  }
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("10 Questions"),

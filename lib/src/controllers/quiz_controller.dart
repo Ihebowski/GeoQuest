@@ -15,14 +15,9 @@ class QuizController extends GetxController {
 
   RxBool isLoading = true.obs;
 
-  @override
-  void onInit() {
-    super.onInit();
-    loadQuestions();
-  }
-
   void loadQuestions() async {
     try {
+      await Future.delayed(const Duration(seconds: 1));
       var generatedQuestions = await questionService.generateRandomQuestions();
       questions.value = generatedQuestions;
       isLoading.value = false;
