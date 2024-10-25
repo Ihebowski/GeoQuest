@@ -127,3 +127,7 @@ bug fixes.
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more
 information.
+
+## Contact
+
+For any questions or support, please contact us at Iheb.Barrah@gmail.com.
