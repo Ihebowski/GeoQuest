@@ -84,7 +84,7 @@ class _ResultQuizViewState extends State<ResultQuizView> {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: GestureDetector(
-                    onTap: () => Get.offNamed("/"),
+                    onTap: () => Get.offNamed("/main"),
                     child: Container(
                       height: 50.0,
                       width: double.infinity,

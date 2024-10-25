@@ -33,7 +33,7 @@ class AuthController extends GetxController {
           colorText: Colors.white,
           backgroundColor: elementBackgroundColor.withOpacity(0.7),
         );
-        Get.offAllNamed('/');
+        Get.offAllNamed('/main');
       }
     } catch (e) {
       Get.snackbar(
@@ -61,7 +61,7 @@ class AuthController extends GetxController {
           colorText: Colors.white,
           backgroundColor: elementBackgroundColor.withOpacity(0.7),
         );
-        Get.offAllNamed('/');
+        Get.offAllNamed('/main');
       }
     } catch (e) {
       Get.snackbar(
@@ -96,7 +96,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> checkLoggedInUser() async {
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 3));
     String? uid = await authService.getSavedUser();
     if (uid != null) {
       isLoggedIn.value = true;
@@ -106,7 +106,7 @@ class AuthController extends GetxController {
         colorText: Colors.white,
         backgroundColor: elementBackgroundColor.withOpacity(0.7),
       );
-      Get.offAllNamed('/');
+      Get.offAndToNamed('/main');
     } else {
       isLoggedIn.value = false;
       Get.snackbar(
@@ -115,7 +115,7 @@ class AuthController extends GetxController {
         colorText: Colors.white,
         backgroundColor: elementBackgroundColor.withOpacity(0.7),
       );
-      Get.offAllNamed('/login');
+      Get.offAndToNamed('/login');
     }
   }
 }
