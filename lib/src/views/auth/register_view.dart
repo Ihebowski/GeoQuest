@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 class RegisterView extends StatelessWidget {
   final AuthController authController = Get.find<AuthController>();
+
   RegisterView({super.key});
 
   @override
@@ -192,7 +193,7 @@ class RegisterView extends StatelessWidget {
                     ),
                     const SizedBox(width: 10.0),
                     GestureDetector(
-                      onTap: () => Get.toNamed("/login"),
+                      onTap: () => Get.back(),
                       child: const Text(
                         "Login",
                         style: TextStyle(

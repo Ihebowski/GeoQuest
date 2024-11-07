@@ -43,7 +43,7 @@ class _HomeViewState extends State<HomeView> {
         if (userController.userModel.value == null) {
           return const Center(
             child: Text(
-              'No user data available.',
+              'Failed to get user data.',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18.0,

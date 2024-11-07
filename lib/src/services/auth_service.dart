@@ -59,6 +59,19 @@ class AuthService {
     }
   }
 
+  Future<bool> checkUsernameExists(String username) async {
+    try {
+      QuerySnapshot result = await _firestore
+          .collection('users')
+          .where('username', isEqualTo: username)
+          .get();
+
+      return result.docs.isNotEmpty;
+    } catch (e) {
+      throw Exception("Failed to check username: $e");
+    }
+  }
+
   Future<Map<String, dynamic>?> getUserData() async {
     try {
       User? user = _auth.currentUser;

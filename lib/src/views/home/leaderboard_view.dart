@@ -42,7 +42,7 @@ class _LeaderboardViewState extends State<LeaderboardView> {
           if (leaderboardController.leaderboardList.isEmpty) {
             return const Center(
               child: Text(
-                'No leaderboard data found.',
+                'Failed to get leaderboard data.',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 18.0,
