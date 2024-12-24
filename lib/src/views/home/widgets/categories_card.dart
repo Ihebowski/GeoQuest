@@ -20,7 +20,7 @@ class CategoriesCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: width*0.405,
-        height: height*0.255,
+        height: height*0.250,
         padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 25.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),

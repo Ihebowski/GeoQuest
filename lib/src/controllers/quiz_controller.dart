@@ -22,6 +22,7 @@ class QuizController extends GetxController {
       questions.value = generatedQuestions;
       isLoading.value = false;
     } catch (e) {
+      print(e);
       Get.snackbar(
         "Error",
         e.toString(),

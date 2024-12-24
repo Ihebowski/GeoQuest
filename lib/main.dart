@@ -10,11 +10,14 @@ import 'package:geoquest/src/views/home/main_view.dart';
 import 'package:geoquest/src/views/quiz/quiz_view.dart';
 import 'package:geoquest/src/views/quiz/result_quiz_view.dart';
 import 'package:geoquest/src/views/splash/splash_view.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
@@ -26,6 +29,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'GeoQuest',
       theme: AppTheme.appTheme,
+      debugShowCheckedModeBanner: false,
       initialRoute: "/splash",
       getPages: [
         GetPage(name: "/onboard", page: () => const OnboardView()),
