@@ -5,6 +5,7 @@ import 'package:geoquest/src/controllers/user_controller.dart';
 import 'package:geoquest/src/models/user_model.dart';
 import 'package:geoquest/src/styles/app_colors.dart';
 import 'package:geoquest/src/views/home/widgets/categories_card.dart';
+import 'package:geoquest/src/views/quiz/quiz_view.dart';
 import 'package:get/get.dart';
 
 class HomeView extends StatefulWidget {
@@ -335,7 +336,11 @@ class _HomeViewState extends State<HomeView> {
                           children: [
                             CategoriesCard(
                               name: "Flag",
-                              onTap: () => Get.toNamed("/quiz"),
+                              onTap: () =>   Get.to(
+                                    () => const QuizView(),
+                                transition: Transition.zoom,
+                                duration: const Duration(milliseconds: 500),
+                              ),
                             ),
                             CategoriesCard(
                               name: "Capital",
